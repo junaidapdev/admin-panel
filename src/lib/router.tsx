@@ -4,6 +4,7 @@ import RegisterPage from "@/Pages/RegisterPage";
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import BooksPage from "@/Pages/BooksPage";
+import AuthLayout from "@/layouts/AuthLayout";
 
 export const router = createBrowserRouter (
     [
@@ -22,13 +23,20 @@ export const router = createBrowserRouter (
             ],
         },
         {
-            path: '/login',
-            element: <LoginPage />
+            path: '/auth',
+            element: <AuthLayout />,
+            children: [
+                {
+                    path: 'login',
+                    element: <LoginPage />
+                },
+                {
+                    path: 'register',
+                    element: <RegisterPage />
+                }
+            ]
         },
-        {
-            path: '/register',
-            element: <RegisterPage />
-        }
+       
        
     ]
 )
